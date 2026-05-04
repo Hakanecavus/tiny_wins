@@ -400,12 +400,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'İlk alışkanlığını ekleyerek başla! ✨',
-            style: TextStyle(
-              fontSize: 14,
-              color: AppColors.textSecondary,
-            ),
+          const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'İlk alışkanlığını ekleyerek başla! ',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              Icon(
+                Icons.auto_awesome_rounded,
+                size: 16,
+                color: AppColors.textSecondary,
+              ),
+            ],
           ),
           const SizedBox(height: 24),
           ElevatedButton.icon(

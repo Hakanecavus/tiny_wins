@@ -19,28 +19,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingPage> _pages = [
     OnboardingPage(
-      emoji: '🌟',
+      icon: Icons.auto_awesome_rounded,
       title: 'Minik Kazanımlar',
       description:
           'Küçük adımlarla büyük değişimler!\nGünlük alışkanlıklarınla kendini geliştir.',
       color: AppColors.primary,
     ),
     OnboardingPage(
-      emoji: '💧',
+      icon: Icons.water_drop_rounded,
       title: 'Tatlı Hatırlatıcılar',
       description:
           'Sıkıcı bildirimler yok!\nSevimli arkadaşların seni motive etsin.',
       color: AppColors.secondary,
     ),
     OnboardingPage(
-      emoji: '🏆',
+      icon: Icons.emoji_events_rounded,
       title: 'Seri Tut',
       description:
           'Her gün tamamla, seri oluştur!\nKaç gün devam edebileceksin?',
       color: AppColors.accentDark,
     ),
     OnboardingPage(
-      emoji: '✨',
+      icon: Icons.rocket_launch_rounded,
       title: 'Başlamaya Hazır mısın?',
       description:
           'Şimdi ilk alışkanlığını oluştur\nve yolculuğa başla!',
@@ -135,14 +135,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                      child: Text(
-                        _currentPage == _pages.length - 1
-                            ? 'Başlayalım! 🚀'
-                            : 'Devam Et',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _currentPage == _pages.length - 1
+                                ? 'Başlayalım!'
+                                : 'Devam Et',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          if (_currentPage == _pages.length - 1) ...[
+                            const SizedBox(width: 8),
+                            const Icon(Icons.rocket_launch_rounded, size: 20),
+                          ],
+                        ],
                       ),
                     ),
                   ),
@@ -177,9 +186,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               borderRadius: BorderRadius.circular(40),
             ),
             child: Center(
-              child: Text(
-                page.emoji,
-                style: const TextStyle(fontSize: 80),
+              child: Icon(
+                page.icon,
+                size: 80,
+                color: page.color,
               ),
             ),
           )
@@ -226,14 +236,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
 /// Onboarding sayfa modeli
 class OnboardingPage {
-  final String emoji;
+  final IconData icon;
   final String title;
   final String description;
   final Color color;
   final bool isLastPage;
 
   OnboardingPage({
-    required this.emoji,
+    required this.icon,
     required this.title,
     required this.description,
     required this.color,

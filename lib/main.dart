@@ -5,13 +5,8 @@ import 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
   // Türkçe tarih formatlarını başlat
   await initializeDateFormatting('tr_TR', null);
 
-  runApp(
-    const ProviderScope(
-      child: TinyWinsApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: TinyWinsApp()));
 }
